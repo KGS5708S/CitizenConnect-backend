@@ -1,7 +1,13 @@
+import os
+
 class Config:
-    SQLALCHEMY_DATABASE_URI = (
-        "postgresql://postgres:Postgres%40123@localhost:5432/citizenconnect"
+    SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret")
+    JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "jwt-secret")
+
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+        "sqlite:///database.db"
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    JWT_SECRET_KEY = "super-secret-key"
 
+SECRET_KEY = os.environ.get("SECRET_KEY")
+JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY")
